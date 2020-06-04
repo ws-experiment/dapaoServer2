@@ -18,7 +18,7 @@ exports.deleteOldOrders = functions.database
     const newAddedUserId = change.val().userId;
     const now = Date.now();
     const cutoff = now - CUT_OFF_TIME;
-   
+    console.log("Cut Off Timestamp: ", cutoff);
     const ref = change.ref.parent; // reference to the parent
     const oldItemQuery = ref.orderByChild("date").endAt(cutoff);
     const snapshot = await oldItemQuery.once("value");
